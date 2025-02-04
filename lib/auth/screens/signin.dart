@@ -1,0 +1,162 @@
+import 'package:flutter/material.dart';
+import 'package:rankify/common/widgets/common_text_button.dart';
+import 'package:rankify/common/widgets/common_textfield.dart';
+import 'package:rankify/common/widgets/common_button.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+
+class Signin extends StatefulWidget {
+  const Signin({super.key});
+
+  @override
+  State<Signin> createState() => _SigninState();
+}
+
+class _SigninState extends State<Signin> {
+  bool isObscure = true;
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      body: KeyboardVisibilityBuilder(builder: (context, isKeyboardVisible) {
+        return Padding(
+          padding: EdgeInsets.only(top: 40),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              if(!isKeyboardVisible)...[
+                SizedBox(
+                height: 80,
+              ),
+              Image.asset(
+                "assets/R2.png",
+                width: 100,
+                height: 100,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+
+              ],
+              // if(isKeyboardVisible)...[
+              //   SizedBox(
+              //   height: 40,
+              // ),
+              // Image.asset(
+              //   "assets/R2.png",
+              //   width: 100,
+              //   height: 100,
+              // ),
+              // SizedBox(
+              //   height: 10,
+              // ),
+
+              // ],
+              
+              
+              Expanded(
+                child: SingleChildScrollView(
+                  reverse: true,
+                  child: Container(
+                    padding: EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(40),
+                            topRight: Radius.circular(40)),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black38,
+                              blurRadius: 8,
+                              offset: Offset(4, 0))
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Form(
+                            key: _formKey,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Sign in",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 20),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                CommonTextfield(
+                                  label: "Email",
+                                  hintText: "Enter your email",
+                                  controller: emailController,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                CommonTextfield(
+                                  hintText: "Enter your password",
+                                  label: "Password",
+                                  controller: passwordController,
+                                  obscureText: isObscure,
+                                  suffixIcon: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          isObscure = !isObscure;
+                                        });
+                                      },
+                                      icon: Icon(isObscure
+                                          ? Icons.visibility_off
+                                          : Icons.visibility)),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                 ],
+                            ),
+                          ),
+                        
+                        
+                            
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                CommonButton(text: "Sign In", 
+                                onTap: (){
+                                  
+                                }),
+                                 SizedBox(
+                              height: 10,
+                            ),
+                            CommonTextButton(text: "ForgotPassword?", 
+                            onTap: (){}, 
+                            color: Colors.red),
+                            
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Don't have an account"),
+                                CommonTextButton(text: "Sign Up", onTap: (){}, color: Colors.green)
+                              ],
+                            )
+
+                              ],
+                            ),
+                            ],
+                      ),
+                            
+                         
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        );
+      }),
+    );
+  }
+}
