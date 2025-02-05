@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:rankify/auth/screens/examCategory.dart';
+import 'package:rankify/auth/screens/language.dart';
 import 'package:rankify/auth/screens/signin.dart';
+import 'package:rankify/auth/screens/signup.dart';
 import 'package:rankify/constants/global_variables.dart';
+import 'package:rankify/splashScreen.dart';
 
 void main() {
+
   runApp(const MyApp());
 }
 
@@ -20,7 +25,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const Signin(),
+      home: Signin(),
     );
   }
 }

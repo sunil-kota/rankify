@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rankify/common/widgets/common_text_button.dart';
-import 'package:rankify/common/widgets/common_textfield.dart';
-import 'package:rankify/common/widgets/common_button.dart';
+import 'package:rankify/auth/screens/signup.dart';
+import 'package:rankify/common/widgets/custom_text_button.dart';
+import 'package:rankify/common/widgets/custom_textfield.dart';
+import 'package:rankify/common/widgets/custom_button.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class Signin extends StatefulWidget {
@@ -13,7 +14,7 @@ class Signin extends StatefulWidget {
 
 class _SigninState extends State<Signin> {
   bool isObscure = true;
-  final _formKey = GlobalKey<FormState>();
+  final _signinformKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
@@ -26,19 +27,18 @@ class _SigninState extends State<Signin> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              if(!isKeyboardVisible)...[
+              if (!isKeyboardVisible) ...[
                 SizedBox(
-                height: 80,
-              ),
-              Image.asset(
-                "assets/R2.png",
-                width: 100,
-                height: 100,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-
+                  height: 80,
+                ),
+                Image.asset(
+                  "assets/R2.png",
+                  width: 100,
+                  height: 100,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
               ],
               // if(isKeyboardVisible)...[
               //   SizedBox(
@@ -54,8 +54,7 @@ class _SigninState extends State<Signin> {
               // ),
 
               // ],
-              
-              
+
               Expanded(
                 child: SingleChildScrollView(
                   reverse: true,
@@ -77,19 +76,20 @@ class _SigninState extends State<Signin> {
                       child: Column(
                         children: [
                           Form(
-                            key: _formKey,
+                            key: _signinformKey,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "Sign in",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 20),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
                                 ),
                                 SizedBox(
                                   height: 20,
                                 ),
-                                CommonTextfield(
+                                CustomTextfield(
                                   label: "Email",
                                   hintText: "Enter your email",
                                   controller: emailController,
@@ -97,7 +97,7 @@ class _SigninState extends State<Signin> {
                                 SizedBox(
                                   height: 20,
                                 ),
-                                CommonTextfield(
+                                CustomTextfield(
                                   hintText: "Enter your password",
                                   label: "Password",
                                   controller: passwordController,
@@ -110,45 +110,41 @@ class _SigninState extends State<Signin> {
                                       },
                                       icon: Icon(isObscure
                                           ? Icons.visibility_off
-                                          : Icons.visibility)),
+                                          : Icons.visibility,)),
                                 ),
                                 SizedBox(
                                   height: 20,
                                 ),
-                                 ],
+                              ],
                             ),
                           ),
-                        
-                        
-                            
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                CommonButton(text: "Sign In", 
-                                onTap: (){
-                                  
-                                }),
-                                 SizedBox(
-                              height: 10,
-                            ),
-                            CommonTextButton(text: "ForgotPassword?", 
-                            onTap: (){}, 
-                            color: Colors.red),
-                            
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("Don't have an account"),
-                                CommonTextButton(text: "Sign Up", onTap: (){}, color: Colors.green)
-                              ],
-                            )
-
-                              ],
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              CustomButton(text: "Sign In", onTap: () {}),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              CustomTextButton(
+                                  text: "ForgotPassword?",
+                                  onTap: () {},
+                                  color: Colors.red),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text("Don't have an account"),
+                                  CustomTextButton(
+                                      text: "Sign Up",
+                                      onTap: () {
+                                        Navigator.push(context,MaterialPageRoute(builder: (context)=>Signup()));
+                                      },
+                                      color: Colors.green)
+                                ],
+                              )
                             ],
+                          ),
+                        ],
                       ),
-                            
-                         
                     ),
                   ),
                 ),
