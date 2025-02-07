@@ -4,6 +4,7 @@ import 'package:rankify/common/widgets/custom_text_button.dart';
 import 'package:rankify/common/widgets/custom_textfield.dart';
 import 'package:rankify/common/widgets/custom_button.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:rankify/constants/global_variables.dart';
 
 class Signin extends StatefulWidget {
   const Signin({super.key});
@@ -27,18 +28,22 @@ class _SigninState extends State<Signin> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              if (!isKeyboardVisible) ...[
-                SizedBox(
+              SizedBox(
                   height: 80,
                 ),
-                Image.asset(
-                  "assets/R2.png",
-                  width: 100,
-                  height: 100,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
+              if(!isKeyboardVisible)...[
+                 Image.asset(
+                "assets/R2.png",
+                width: 250,
+                height: 250,
+              ),
+              ],
+              if(isKeyboardVisible)...[
+                 Image.asset(
+                "assets/R2.png",
+                width: 100,
+                height: 100,
+              ),
               ],
               // if(isKeyboardVisible)...[
               //   SizedBox(
@@ -121,7 +126,7 @@ class _SigninState extends State<Signin> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              CustomButton(text: "Sign In", onTap: () {}),
+                              CustomButton(text: "Sign In", onTap: () {},color:GlobalVariables.buttonColor,textColor: GlobalVariables.backgroundColor,),
                               SizedBox(
                                 height: 10,
                               ),

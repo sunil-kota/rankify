@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rankify/auth/screens/language.dart';
 import 'package:rankify/common/widgets/rectangle_button.dart';
 import 'package:rankify/constants/global_variables.dart';
 
@@ -10,7 +11,15 @@ class Examcategory extends StatefulWidget {
 }
 
 class _ExamcategoryState extends State<Examcategory> {
-  
+  Color textColor = GlobalVariables.textBlack;
+  Color buttonColor = GlobalVariables.backgroundColor;
+
+  void changeColor() {
+    setState(() {
+      textColor = GlobalVariables.textWhite;
+      buttonColor = GlobalVariables.buttonColor;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +59,6 @@ class _ExamcategoryState extends State<Examcategory> {
               ),
               Expanded(
                 child: SingleChildScrollView(
-                  
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -58,61 +66,100 @@ class _ExamcategoryState extends State<Examcategory> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         RectangleButton(
-                          text: "Groups",
-                          
-                        ),
+                            text: "Groups",
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Language()));
+                            }),
                         SizedBox(
                           height: 10,
                         ),
                         RectangleButton(
-                          text: "SI & PC",
-                          
-                        ),
+                            text: "SI & PC",
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Language()));
+                            }),
                         SizedBox(
                           height: 10,
                         ),
                         RectangleButton(
-                          text: "DSC",
-                         
-                        ),
+                            text: "DSC",
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Language()));
+                            }),
                         SizedBox(
                           height: 10,
                         ),
                         RectangleButton(
-                          text: "SSC",
-                         
-                        ),
+                            text: "SSC",
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Language()));
+                            }),
                         SizedBox(
                           height: 10,
                         ),
                         RectangleButton(
-                          text: "Banks",
-                         
-                        ),
+                            text: "Banks",
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Language()));
+                            }),
                         SizedBox(
                           height: 10,
                         ),
                         RectangleButton(
-                          text: "RRB",
-                         
-                        ),
+                            text: "RRB",
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Language()));
+                            }),
                         SizedBox(
                           height: 10,
                         ),
                         RectangleButton(
-                          text: "Other",
-                         
+                            text: "Other",
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Language()));
+                            }),
+                        SizedBox(
+                          height: 10,
                         ),
+
+                       
                         SizedBox(
                           height: 20,
                         ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Note:"),SizedBox(width: 5,),
-                            Expanded(child: Text("You can add additional exam or deselect current exam preparation."
-                            "These changes can be done by going to the menu section in the home page and add your changes.",
-                            softWrap: true,))
+                            Text("Note:"),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                                child: Text(
+                              "You can add additional exam or deselect current exam preparation."
+                              "These changes can be done by going to the menu section in the home page and add your changes.",
+                              softWrap: true,
+                            ))
                           ],
                         )
                       ],

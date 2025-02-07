@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:rankify/auth/screens/Phonenumber.dart';
+import 'package:rankify/auth/screens/Sucessful.dart';
 import 'package:rankify/auth/screens/examCategory.dart';
 import 'package:rankify/auth/screens/language.dart';
 import 'package:rankify/auth/screens/signin.dart';
 import 'package:rankify/auth/screens/signup.dart';
+import 'package:rankify/auth/screens/auth.dart';
 import 'package:rankify/constants/global_variables.dart';
 import 'package:rankify/splashScreen.dart';
 
@@ -25,7 +28,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: Signin(),
+      home:  Phonenumber(),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rankify/auth/screens/Sucessful.dart';
 import 'package:rankify/common/widgets/rectangle_button.dart';
 
 class Language extends StatefulWidget {
@@ -38,18 +39,32 @@ class _LanguageState extends State<Language> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      RectangleButton(text: "English"),
+                      RectangleButton(text: "English",onPressed: ()=>{
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Successful()))
+                      },),
                       SizedBox(height: 10,),
-                      RectangleButton(text: "Hindi"),
+                      RectangleButton(text: "Hindi",onPressed: ()=>{
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Successful()))
+                      },),
                       SizedBox(height: 10,),
-                      RectangleButton(text: "Telugu"),
+                      RectangleButton(text: "Telugu",onPressed: ()=>{
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Successful()))
+                      },),
                       SizedBox(height: 10,),
-                      RectangleButton(text: "Marathi"),
+                      RectangleButton(text: "Marathi",onPressed: ()=>{
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Successful()))
+                      },),
                       SizedBox(height: 10,),
-                      RectangleButton(text: "Tamil"),
+                      RectangleButton(text: "Tamil",onPressed: ()=>{
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Successful()))
+                      },),
                       SizedBox(height: 10,),
-                       RectangleButton(text: "Kannada"),
-                      SizedBox(height: 30,),
+                      RectangleButton(text: "Kannada",onPressed: ()=>{
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Successful()))
+                      },),
+                      SizedBox(height: 10,),
+
+                    
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

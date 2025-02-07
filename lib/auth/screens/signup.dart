@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:rankify/auth/screens/examCategory.dart';
 import 'package:rankify/common/widgets/custom_button.dart';
 import 'package:rankify/common/widgets/custom_checkbox.dart';
 import 'package:rankify/common/widgets/custom_textfield.dart';
@@ -139,7 +140,9 @@ class _SignupState extends State<Signup> {
                                 )),
                             Column(
                               children: [
-                                CustomButton(text: "Sign Up", onTap: () => {})
+                                CustomButton(text: "Sign Up", onTap: () => {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Examcategory()))
+                                },color: GlobalVariables.buttonColor,textColor: GlobalVariables.backgroundColor,)
                               ],
                             )
                           ],
