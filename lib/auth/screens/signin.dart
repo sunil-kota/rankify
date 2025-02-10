@@ -20,142 +20,154 @@ class _SigninState extends State<Signin> {
   TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: KeyboardVisibilityBuilder(builder: (context, isKeyboardVisible) {
-        return Padding(
-          padding: EdgeInsets.only(top: 40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                  height: 80,
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // SizedBox(
+            //   height: 80,
+            // ),
+            // if (!isKeyboardVisible) ...[
+              Image.asset(
+                "assets/R1.png",
+                width: screenWidth*0.5,
+                height: screenHeight*0.2,
+              ),
+            // ],
+            // if (isKeyboardVisible) ...[
+            //   Image.asset(
+            //     "assets/R1.png",
+            //     width: 100,
+            //     height: 100,
+            //   ),
+            // ],
+            // if(isKeyboardVisible)...[
+            //   SizedBox(
+            //   height: 40,
+            // ),
+            // Image.asset(
+            //   "assets/R2.png",
+            //   width: 100,
+            //   height: 100,
+            // ),
+            // SizedBox(
+            //   height: 10,
+            // ),
+        
+            // ],
+        
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40)),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black38,
+                        blurRadius: 8,
+                        offset: Offset(4, 0))
+                  ],
                 ),
-              if(!isKeyboardVisible)...[
-                 Image.asset(
-                "assets/R2.png",
-                width: 250,
-                height: 250,
-              ),
-              ],
-              if(isKeyboardVisible)...[
-                 Image.asset(
-                "assets/R2.png",
-                width: 100,
-                height: 100,
-              ),
-              ],
-              // if(isKeyboardVisible)...[
-              //   SizedBox(
-              //   height: 40,
-              // ),
-              // Image.asset(
-              //   "assets/R2.png",
-              //   width: 100,
-              //   height: 100,
-              // ),
-              // SizedBox(
-              //   height: 10,
-              // ),
-
-              // ],
-
-              Expanded(
                 child: SingleChildScrollView(
-                  reverse: true,
-                  child: Container(
-                    padding: EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(40),
-                            topRight: Radius.circular(40)),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black38,
-                              blurRadius: 8,
-                              offset: Offset(4, 0))
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Form(
-                            key: _signinformKey,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Sign in",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                CustomTextfield(
-                                  label: "Email",
-                                  hintText: "Enter your email",
-                                  controller: emailController,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                CustomTextfield(
-                                  hintText: "Enter your password",
-                                  label: "Password",
-                                  controller: passwordController,
-                                  obscureText: isObscure,
-                                  suffixIcon: IconButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          isObscure = !isObscure;
-                                        });
-                                      },
-                                      icon: Icon(isObscure
-                                          ? Icons.visibility_off
-                                          : Icons.visibility,)),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Form(
+                          key: _signinformKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              CustomButton(text: "Sign In", onTap: () {},color:GlobalVariables.buttonColor,textColor: GlobalVariables.backgroundColor,),
-                              SizedBox(
-                                height: 10,
+                              Text(
+                                "Sign in",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20),
                               ),
-                              CustomTextButton(
-                                  text: "ForgotPassword?",
-                                  onTap: () {},
-                                  color: Colors.red),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("Don't have an account"),
-                                  CustomTextButton(
-                                      text: "Sign Up",
-                                      onTap: () {
-                                        Navigator.push(context,MaterialPageRoute(builder: (context)=>Signup()));
-                                      },
-                                      color: Colors.green)
-                                ],
-                              )
+                              SizedBox(
+                                height: 20,
+                              ),
+                              CustomTextfield(
+                                label: "Email",
+                                hintText: "Enter your email",
+                                controller: emailController,
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              CustomTextfield(
+                                hintText: "Enter your password",
+                                label: "Password",
+                                controller: passwordController,
+                                obscureText: isObscure,
+                                suffixIcon: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        isObscure = !isObscure;
+                                      });
+                                    },
+                                    icon: Icon(
+                                      isObscure
+                                          ? Icons.visibility_off
+                                          : Icons.visibility,
+                                    )),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            CustomButton(
+                              text: "Sign In",
+                              onTap: () {},
+                              color: GlobalVariables.buttonColor,
+                              textColor: GlobalVariables.backgroundColor,
+                              
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            CustomTextButton(
+                                text: "ForgotPassword?",
+                                onTap: () {},
+                                color: Colors.red),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Don't have an account"),
+                                CustomTextButton(
+                                    text: "Sign Up",
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Signup()));
+                                    },
+                                    color: Colors.green)
+                              ],
+                            )
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         );
       }),
     );

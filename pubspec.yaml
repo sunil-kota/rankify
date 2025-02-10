@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_keyboard_visibility: ^6.0.0
   flutter_native_splash: ^2.4.4
+  another_carousel_pro: ^1.0.2
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:

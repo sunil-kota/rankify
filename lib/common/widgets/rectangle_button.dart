@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rankify/auth/screens/Sucessful.dart';
-import 'package:rankify/auth/screens/language.dart';
+// import 'package:rankify/auth/screens/Sucessful.dart';
+// import 'package:rankify/auth/screens/language.dart';
 import 'package:rankify/constants/global_variables.dart';
 
 class RectangleButton extends StatefulWidget {
@@ -15,7 +15,7 @@ class RectangleButton extends StatefulWidget {
 }
 
 class _RectangleButtonState extends State<RectangleButton> {
-  Color textColor = GlobalVariables.textBlack;
+  Color textColor =GlobalVariables.buttonColor;
   Color buttonColor = GlobalVariables.inactivebuttonColor;
   void changeColor() {
     setState(() {
@@ -32,18 +32,19 @@ class _RectangleButtonState extends State<RectangleButton> {
         Future.delayed(Duration(milliseconds: 200), widget.onPressed);
        
       },
-      child: Text(
-        widget.text,
-        style: TextStyle(fontSize: 16),
-      ),
+      
       style: ElevatedButton.styleFrom(
           backgroundColor: buttonColor,
           foregroundColor: textColor,
           minimumSize: Size(250, 50),
           shape: RoundedRectangleBorder(
             side: BorderSide(color: Colors.black),
-            borderRadius: BorderRadius.circular(0),
-          )),
+            borderRadius: BorderRadius.circular(10),
+          ),),
+          child: Text(
+        widget.text,
+        style: TextStyle(fontSize: 16),
+      ),
     );
   }
 }

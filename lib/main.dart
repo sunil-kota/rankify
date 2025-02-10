@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:rankify/auth/screens/Phonenumber.dart';
-import 'package:rankify/auth/screens/Sucessful.dart';
-import 'package:rankify/auth/screens/examCategory.dart';
-import 'package:rankify/auth/screens/language.dart';
-import 'package:rankify/auth/screens/signin.dart';
-import 'package:rankify/auth/screens/signup.dart';
-import 'package:rankify/auth/screens/auth.dart';
+import 'package:rankify/auth/screens/phonesignup.dart';
+// import 'package:rankify/auth/screens/Sucessful.dart';
+// import 'package:rankify/auth/screens/examCategory.dart';
+// import 'package:rankify/auth/screens/language.dart';
+// import 'package:rankify/auth/screens/signin.dart';
+// import 'package:rankify/auth/screens/signup.dart';
+// import 'package:rankify/auth/screens/auth.dart';
 import 'package:rankify/constants/global_variables.dart';
-import 'package:rankify/splashScreen.dart';
+// import 'package:rankify/splashScreen.dart';
 
 void main() {
 
@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: GlobalVariables.backgroundColor,
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        appBarTheme: AppBarTheme(color: GlobalVariables.backgroundColor),
       ),
       debugShowCheckedModeBanner: false,
       home:  Phonenumber(),
