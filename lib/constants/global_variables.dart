@@ -5,7 +5,7 @@ class GlobalVariables {
    
 
   
-  static const backgroundColor = Colors.white;
+  static const backgroundColor =  Color(0xFFFAFAFA);
   static const buttonColor =Color(0xFFCA174D);
   static const inactivebuttonColor=Colors.white;
   static const textBlack=Colors.black;
