@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rankify/auth/screens/Sucessful.dart';
+import 'package:rankify/features/auth/screens/successful.dart';
 import 'package:rankify/common/widgets/rectangle_button.dart';
-import 'package:rankify/constants/global_variables.dart';
+import 'package:rankify/constants/colors.dart';
 
 class Language extends StatefulWidget {
   const Language({super.key});
@@ -158,7 +158,7 @@ class _LanguageState extends State<Language> {
                           Text(
                             "Note:",
                             style: TextStyle(
-                                color: GlobalVariables.buttonColor,
+                                color: GlobalColors.buttonColor,
                                 fontWeight: FontWeight.bold),
                           ),
                           SizedBox(

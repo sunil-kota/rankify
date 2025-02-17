@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rankify/constants/global_variables.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rankify/constants/colors.dart';
 
 class CustomIcon extends StatelessWidget {
   final String imagePath;
@@ -7,13 +8,12 @@ class CustomIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Image.asset(
+    return  Image.asset(
        imagePath,
-        width: 35,
-        height: 35,
-        color: GlobalVariables.buttonColor,
-      ),
+        width: 35.w,
+        height: 35.h,
+        color: GlobalColors.buttonColor,
+      
     );
   }
 }

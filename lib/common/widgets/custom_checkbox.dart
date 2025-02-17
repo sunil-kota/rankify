@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCheckbox extends StatelessWidget {
   final String text;
@@ -11,7 +12,7 @@ class CustomCheckbox extends StatelessWidget {
   Widget build(BuildContext context) {
     return CheckboxListTile(
       title:
-          Text(text,style: TextStyle(fontSize: 15),),
+          Text(text,style: TextStyle(fontSize: 15.sp),),
       value: isChecked,
       onChanged: (bool? value) => {onTap()},
       controlAffinity: ListTileControlAffinity.leading,

@@ -3,17 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:rankify/auth/screens/emailsignup.dart';
-import 'package:rankify/auth/screens/otp.dart';
-import 'package:rankify/auth/services/authservice.dart';
-// import 'package:rankify/auth/screens/signin.dart';
+import 'package:rankify/features/auth/screens/otp.dart';
+import 'package:rankify/features/auth/services/authservice.dart';
 import 'package:rankify/common/widgets/custom_button.dart';
-// import 'package:rankify/common/widgets/custom_icon.dart';
 import 'package:rankify/common/widgets/custom_text_button.dart';
 import 'package:rankify/common/widgets/custom_textfield.dart';
-import 'package:rankify/constants/global_variables.dart';
-// import 'package:rankify/utils/screen_size.dart';
-// import 'package:rankify/auth/services/authservice.dart';
+import 'package:rankify/constants/colors.dart';
+import 'package:rankify/features/auth/widgets/toptitle.dart';
 
 class Phonenumber extends StatelessWidget {
   const Phonenumber({super.key});
@@ -21,7 +17,7 @@ class Phonenumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final screen = ScreenSize(context);
-    final _phoneSignUpFormKey = GlobalKey<FormState>();
+    final phoneSignUpFormKey = GlobalKey<FormState>();
     TextEditingController phoneController = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -50,10 +46,10 @@ class Phonenumber extends StatelessWidget {
                         fit: BoxFit.contain),
                   ],
                   dotSize: 4,
-                  dotIncreasedColor: GlobalVariables.buttonColor,
+                  dotIncreasedColor: GlobalColors.buttonColor,
                   dotColor: Colors.grey,
                   indicatorBgPadding: 2.r,
-                  dotBgColor: GlobalVariables.backgroundColor,
+                  dotBgColor: GlobalColors.backgroundColor,
                   // showIndicator: false,
                   dotPosition: DotPosition.bottomCenter,
                 ),
@@ -79,13 +75,6 @@ class Phonenumber extends StatelessWidget {
                       topLeft: Radius.circular(40.r),
                       topRight: Radius.circular(40.r),
                     ),
-                    // boxShadow: [
-                    //   BoxShadow(
-                    //     color: Colors.black12,
-                    //     blurRadius: 2,
-                    //     offset: Offset(4, 0),
-                    //   )
-                    // ],
                   ),
                   child: SingleChildScrollView(
                     child: Padding(
@@ -93,31 +82,25 @@ class Phonenumber extends StatelessWidget {
                       child: Column(
                         children: [
                           Form(
-                              key: _phoneSignUpFormKey,
+                              key: phoneSignUpFormKey,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    "Enter Your Mobile Number",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16.sp),
-                                  ),
-                                  SizedBox(
-                                    // height: screen.Height * (10 / 812),
-                                    height: 10.h,
-                                  ),
-                                  Text("Please enter your mobile number"),
+                                  Toptitle(
+                                      subtitle:
+                                          "Please enter your mobile number",
+                                      title: "Enter Your Mobile Number"),
                                   SizedBox(
                                     // height: screen.Height * (25 / 812),
                                     height: 25.h,
                                   ),
                                   CustomTextfield(
-                                      hintText:
-                                          "Enter your 10 digit Mobile Number",
-                                      // label: "Mobile Number",
-                                      controller: phoneController,
-                                      keyboardType: TextInputType.phone,)
+                                    hintText:
+                                        "Enter your 10 digit Mobile Number",
+                                    // label: "Mobile Number",
+                                    controller: phoneController,
+                                    keyboardType: TextInputType.phone,
+                                  )
                                 ],
                               )),
                           SizedBox(
@@ -127,20 +110,41 @@ class Phonenumber extends StatelessWidget {
                           CustomButton(
                               text: "Continue",
                               onTap: () => {
-                                    if (_phoneSignUpFormKey.currentState!
+                                    if (phoneSignUpFormKey.currentState!
                                         .validate())
                                       {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
+                                        FirebaseAuth.instance.verifyPhoneNumber(
+                                          phoneNumber: phoneController.text,
+                                          verificationCompleted:
+                                              (phoneAuthCredential) {},
+                                          verificationFailed: (error) {
+                                            // log(error.toString());
+                                            print("error in phonesignup");
+                                          },
+                                          codeSent: (verificationId,
+                                              forceResendingId) {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
                                                 builder: (context) => OTP(
-                                                      phonenumber:
-                                                          phoneController.text,
-                                                    )))
+                                                  phonenumber:
+                                                      phoneController.text,
+                                                  verificationId:
+                                                      verificationId,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          codeAutoRetrievalTimeout:
+                                              (verificationId) {
+                                            // log("Auto retrievel timeout");
+                                            print("Autho retrievela timeout");
+                                          },
+                                        )
                                       }
                                   },
-                              color: GlobalVariables.buttonColor,
-                              textColor: GlobalVariables.textWhite),
+                              color: GlobalColors.buttonColor,
+                              textColor: GlobalColors.textWhite),
                           SizedBox(
                             // height: 15,
                             height: 15.h,
@@ -148,25 +152,27 @@ class Phonenumber extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                                  Expanded(
-                                    child: Divider(
-                                      color: GlobalVariables.textBlack,
-                                      thickness: 1,
-                                      endIndent: 10,
-                                    ),
-                                  ),
+                              Expanded(
+                                child: Divider(
+                                  color: GlobalColors.textBlack
+                                      .withOpacity(0.4),
+                                  thickness: 1.r,
+                                  endIndent: 10.r,
+                                ),
+                              ),
                               Text(
                                 "OR",
                                 style: TextStyle(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.bold,
-                                  color: GlobalVariables.textBlack
+                                  color: GlobalColors.textBlack
                                       .withOpacity(0.4),
                                 ),
                               ),
                               Expanded(
                                 child: Divider(
-                                  color: GlobalVariables.textBlack,
+                                  color: GlobalColors.textBlack
+                                      .withOpacity(0.4),
                                   thickness: 1,
                                   indent: 10,
                                   endIndent: 10,
@@ -174,26 +180,13 @@ class Phonenumber extends StatelessWidget {
                               )
                             ],
                           ),
-                          // SizedBox(
-                          //   height: 25,
-                          // ),
-                          // Text(
-                          //   "Login With",
-                          //   style: TextStyle(
-                          //       fontSize: 16, fontWeight: FontWeight.w300),
-                          // ),
+                          
                           SizedBox(
                             // height: 15,
                             height: 15.h,
                           ),
                           InkWell(
                             onTap: () async {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => Emailsignup(),
-                              //   ),
-                              // )
                               UserCredential? userCredential =
                                   await Authservice.signInWithGoogle();
                               if (userCredential != null) {
@@ -201,8 +194,9 @@ class Phonenumber extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => OTP(
-                                            email:
-                                                userCredential.user?.email)));
+                                              email: userCredential.user?.email,
+                                              verificationId: "",
+                                            )));
                               }
                             },
                             child: Container(
@@ -216,11 +210,7 @@ class Phonenumber extends StatelessWidget {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  // CircleAvatar(
-                                  //   backgroundColor: Colors.white,
-                                  //   foregroundImage: AssetImage("icons/google.png"),
-
-                                  // ),
+                                  
                                   Image.asset(
                                     "icons/google.png",
                                     // width: screen.Width * (50 / 812),
@@ -260,7 +250,7 @@ class Phonenumber extends StatelessWidget {
                                   CustomTextButton(
                                       text: "Terms of Service",
                                       onTap: () {},
-                                      color: GlobalVariables.buttonColor),
+                                      color: GlobalColors.buttonColor),
                                   Text("and",
                                       style: TextStyle(
                                           fontSize: 14.sp,
@@ -269,7 +259,7 @@ class Phonenumber extends StatelessWidget {
                                   CustomTextButton(
                                       text: "Privacy Policy",
                                       onTap: () {},
-                                      color: GlobalVariables.buttonColor)
+                                      color: GlobalColors.buttonColor)
                                 ],
                               ),
                               // SizedBox(

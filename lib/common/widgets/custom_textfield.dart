@@ -28,11 +28,11 @@ class CustomTextfield extends StatelessWidget {
         if (label != null) ...[
           Text(
             label!,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
           ),
         ],
         SizedBox(
-          height: 10,
+          height: 10.h,
         ),
         TextFormField(
           controller: controller,
@@ -46,12 +46,12 @@ class CustomTextfield extends StatelessWidget {
               color: Color.fromRGBO(0, 0, 0, 0.3),
             ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r),
               borderSide:
-                  BorderSide(color: Color.fromRGBO(202, 23, 77, 1), width: 2),
+                  BorderSide(color: Color.fromRGBO(0, 0, 0, 0.3), width: 2),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),

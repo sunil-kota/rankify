@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 
-class GlobalVariables {
+class GlobalColors {
    
 
   
-  static const backgroundColor =  Color(0xFFFAFAFA);
+  static const backgroundColor =  Color(0xFFF2F2F2);
   static const buttonColor =Color(0xFFCA174D);
   static const inactivebuttonColor=Colors.white;
   static const textBlack=Colors.black;

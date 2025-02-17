@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rankify/auth/screens/examcategory.dart';
+import 'package:rankify/features/auth/screens/examcategory.dart';
 import 'package:rankify/common/widgets/custom_button.dart';
 import 'package:rankify/common/widgets/custom_textfield.dart';
-import 'package:rankify/constants/global_variables.dart';
+import 'package:rankify/constants/colors.dart';
+import 'package:rankify/features/auth/widgets/toptitle.dart';
+
 // import 'package:rankify/utils/screen_size.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -12,20 +14,13 @@ class DetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _nameFormKey = GlobalKey<FormState>();
+    final nameFormKey = GlobalKey<FormState>();
     TextEditingController nameController = TextEditingController();
-    // final screen = ScreenSize(context);
+   
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        // title: Text(
-        //   "Sign up",
-        //   style: TextStyle(
-        //     fontSize: 20,
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        // ),
-        // centerTitle: true,
+       
         scrolledUnderElevation: 0,
       ),
       body: KeyboardVisibilityBuilder(
@@ -34,11 +29,11 @@ class DetailsPage extends StatelessWidget {
             padding: EdgeInsets.only(top: 40.r),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              // mainAxisAlignment: MainAxisAlignment.start,
+              
               children: [
                 if(isKeyboardVisible)...[
                   Image.asset(
-                  "assets/R1.png",
+                   "assets/R1.png",
                   // width: screen.Width * 0.8,
                   // height: screen.Height * 0.2,
                   height: 100.h,
@@ -47,7 +42,7 @@ class DetailsPage extends StatelessWidget {
                 ],
                 if(!isKeyboardVisible)...[
                   Image.asset(
-                  "assets/R1.png",
+                   "assets/R1.png",
                   // width: screen.Width * 0.8,
                   // height: screen.Height * 0.2,
                   height: 250.h,
@@ -83,21 +78,25 @@ class DetailsPage extends StatelessWidget {
                             //   style: TextStyle(fontSize: 16),
                             // ),
                             Form(
-                              key: _nameFormKey,
+                              key: nameFormKey,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    "Enter Your Full Name",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16.sp),
-                                  ),
-                                  SizedBox(
-                                    // height: screen.Height * (10 / 812),
-                                    height: 10.h,
-                                  ),
-                                  Text("Please enter your full name"),
+                                  // Text(
+                                  //   "Enter Your Full Name",
+                                  //   style: TextStyle(
+                                  //       fontWeight: FontWeight.bold,
+                                  //       fontSize: 16.sp),
+                                  // ),
+                                  // SizedBox(
+                                  //   // height: screen.Height * (10 / 812),
+                                  //   height: 10.h,
+                                  // ),
+                                  // Text("Please enter your full name"),
+                                   Toptitle(
+                                      subtitle:
+                                          "Please enter your full name",
+                                      title: "Enter Your Full Name"),
                                   SizedBox(
                                     // height: screen.Height * (25 / 812),
                                     height: 25.h,
@@ -117,7 +116,7 @@ class DetailsPage extends StatelessWidget {
                             CustomButton(
                                 text: "Continue",
                                 onTap: () => {
-                                      if (_nameFormKey.currentState!.validate())
+                                      if (nameFormKey.currentState!.validate())
                                         {
                                           Navigator.push(
                                               context,
@@ -126,8 +125,8 @@ class DetailsPage extends StatelessWidget {
                                                       Examcategory()))
                                         }
                                     },
-                                color: GlobalVariables.buttonColor,
-                                textColor: GlobalVariables.textWhite),
+                                color: GlobalColors.buttonColor,
+                                textColor: GlobalColors.textWhite),
                           ],
                         ),
                       ),
