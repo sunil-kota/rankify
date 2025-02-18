@@ -65,7 +65,7 @@ class DashboardAppbar extends StatelessWidget {
                     height: 22.h,
                     width: 37.h,
                     decoration: BoxDecoration(
-                      color: Colors.yellow,
+                      color: Color(0x33EF7F1A),
                       borderRadius: BorderRadius.circular(30.r),
                     ),
                     child: Row(

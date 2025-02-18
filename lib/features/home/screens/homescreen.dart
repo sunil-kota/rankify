@@ -38,21 +38,22 @@ class _HomescreenState extends State<Homescreen> {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        children: [
-
-          //topbar
-          Topbar(currentIndex: _page, onTap: updatePage),
-
-          //somespace between them
-
-          SizedBox(height: 10.h,),
-
-          //body
-          Container(child: pages[_page])
-        ],
-      ),
-
+          children: [
       
+            //topbar
+            Topbar(currentIndex: _page, onTap: updatePage),
+      
+            //somespace between them
+      
+            SizedBox(height: 10.h,),
+      
+            //body
+            Container(child: pages[_page])
+          ],
+        
+      
+        
+      ),
     );
   }
 }

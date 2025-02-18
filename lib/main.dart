@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rankify/features/auth/screens/phonesignup.dart';
@@ -13,9 +14,11 @@ import 'package:rankify/constants/colors.dart';
 import 'package:rankify/features/dashboard/screens/dashboard.dart';
 // import 'package:rankify/splashScreen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   runApp(const MyApp());
 }
@@ -36,7 +39,6 @@ class MyApp extends StatelessWidget {
           // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
           appBarTheme: AppBarTheme(color: GlobalColors.backgroundColor),
-          
         ),
         debugShowCheckedModeBanner: false,
         home: child,
