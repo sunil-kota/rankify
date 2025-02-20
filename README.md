@@ -1,4 +1,4 @@
-# rankify
+#rankify
 
 A new Flutter project.
 
